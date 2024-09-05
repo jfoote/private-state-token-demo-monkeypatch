@@ -1,0 +1,12 @@
+[package]
+name = "private-state-token-demo-monkeypatch"
+version = "0.1.0"
+authors = ["jonathan@foote.pub"]
+edition = "2018"
+publish = false
+
+[profile.release]
+debug = 1
+
+[dependencies]
+fastly = "0.10.0"

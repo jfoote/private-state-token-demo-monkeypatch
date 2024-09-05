@@ -1,0 +1,21 @@
+# This file describes a Fastly Compute package. To learn more visit:
+# https://www.fastly.com/documentation/reference/compute/fastly-toml
+
+authors = ["jonathan@foote.pub"]
+description = "private-state-token-demo.glitch.me is currently broken. This is a monkeypatch to fix it and serve it via https://pst-demo.foote.dev."
+language = "rust"
+manifest_version = 3
+name = "private state token demo monkeypatch"
+service_id = "HH9U6avHro8xjj6iIxgbn2"
+
+[scripts]
+build = "cargo build --bin fastly-compute-project --release --target wasm32-wasi --color always"
+
+[local_server]
+  [local_server.backends]
+    [local_server.backends.pst_demo]
+      url = "https://private-state-token-demo.glitch.me"
+    [local_server.backends.pst_issuer]
+      url = "https://private-state-token-issuer.glitch.me"
+    [local_server.backends.pst_redeemer]
+      url = "https://private-state-token-redeemer.glitch.me"
